@@ -2,6 +2,7 @@ node {
     docker.image('node:16-buster-slim').inside('-p 3000:3000 -u root') {
         
         stage('Build') {
+            echo 'update2minutes'
             sh 'npm install'
         }
         stage('Test') {
