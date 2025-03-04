@@ -14,7 +14,9 @@ node {
         stage('Deploy') {
             try {
                 sh './jenkins/scripts/deliver.sh' 
-                
+                withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key', keyFileVariable: 'SSH_KEY')]) {
+                    sh 'scp -r -i $SSH_KEY build ubuntu@13.229.251.156:/home/ubuntu'
+                }
                 echo 'Menunggu selama 1 menit agar aplikasi bisa digunakan...'
                 sleep time: 60, unit: 'SECONDS' 
 
