@@ -15,7 +15,7 @@ node {
             try {
                 sh './jenkins/scripts/deliver.sh' 
                 withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key', keyFileVariable: 'SSH_KEY')]) {
-                    sh 'scp -r -o StrictHostKeyChecking=no -i $SSH_KEY build ubuntu@13.229.251.156:/home/ubuntu'
+                    sh 'scp -r -o StrictHostKeyChecking=no -i $SSH_KEY build ubuntu@18.139.208.22:/home/ubuntu'
                 }
                 echo 'Menunggu selama 1 menit agar aplikasi bisa digunakan...'
                 sleep time: 60, unit: 'SECONDS' 
